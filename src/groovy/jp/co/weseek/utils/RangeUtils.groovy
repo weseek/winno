@@ -3,11 +3,9 @@ package jp.co.weseek.utils
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 
-import groovy.lang.ObjectRange
-
 class RangeUtils {
 
-	private static Log LOGGER = LogFactory.getLog(RangeUtils)
+	private final static Log LOGGER = LogFactory.getLog(RangeUtils)
 	
 	/**
 	 * 数値の指定範囲をパースして、 {@link Long} or {@link ObjectRange} のリストを返す
