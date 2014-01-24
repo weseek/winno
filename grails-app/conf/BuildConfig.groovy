@@ -1,3 +1,7 @@
+import grails.util.Metadata
+
+def appName = Metadata.current.getApplicationName()
+
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
@@ -34,4 +38,19 @@ grails.project.dependency.resolution = {
             export = false
         }
     }
+}
+
+// loading external Maven repository configuration
+// code based on https://gist.github.com/beckje01/3894523
+//println "${userHome}/.grails/${appName}-mavenInfo.groovy"
+def mavenConfigFile = new File("${userHome}/.grails/${appName}-mavenInfo.groovy")
+if (mavenConfigFile.exists()) {
+	def slurpedMavenInfo = new ConfigSlurper().parse(mavenConfigFile.toURL())
+	slurpedMavenInfo.grails.project.repos.each {k, v ->
+		println "Adding maven info for repo $k"
+		grails.project.repos."$k" = v
+	}
+}
+else {
+	println "No mavenInfo file found."
 }

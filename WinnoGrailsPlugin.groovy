@@ -1,8 +1,8 @@
 class WinnoGrailsPlugin {
-	def groupId = "jp.co.weseek.winno"
+	def groupId = "jp.co.weseek"
 	
 	// the plugin version
-	def version = "0.1"
+	def version = "0.1-SNAPSHOT"
 	// the version or versions of Grails the plugin is designed for
 	def grailsVersion = "2.2 > *"
 	// resources that are excluded from plugin packaging
@@ -18,7 +18,7 @@ Groovy/Grails utility class project
 '''
 
 	// URL to the plugin's documentation
-	def documentation = "http://grails.org/plugin/winno"
+	//	def documentation = "http://grails.org/plugin/winno"
 
 	// Extra (optional) plugin metadata
 
