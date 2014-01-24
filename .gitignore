@@ -42,3 +42,4 @@
 # other
 *.iws
 /target-eclipse
+/plugin.xml
