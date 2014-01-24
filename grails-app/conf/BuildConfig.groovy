@@ -28,7 +28,14 @@ grails.project.dependency.resolution = {
 	dependencies {
 		// specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 		test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
-
+		
+		// http-builder
+		// http://jira.grails.org/browse/GRAILS-9990
+		// があるため、excludesしておく
+		compile('org.codehaus.groovy.modules.http-builder:http-builder:0.6') {
+			excludes 'groovy'
+		}
+		
 		// runtime 'mysql:mysql-connector-java:5.1.21'
 	}
 
@@ -38,6 +45,8 @@ grails.project.dependency.resolution = {
 				":rest-client-builder:1.0.3") {
 					export = false
 		}
+		
+		compile ":quartz:1.0.1"
 		
 		compile ":eclipse-scripts:1.0.7"
 		test(":spock:0.7") {
