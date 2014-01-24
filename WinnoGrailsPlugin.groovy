@@ -7,6 +7,7 @@ class WinnoGrailsPlugin {
 	def grailsVersion = "2.2 > *"
 	// resources that are excluded from plugin packaging
 	def pluginExcludes = [
+		"grails-app/conf/CodeNarcRuleSet.groovy",
 		"grails-app/views/error.gsp"
 	]
 

@@ -43,3 +43,4 @@
 *.iws
 /target-eclipse
 /plugin.xml
+/cobertura.ser
