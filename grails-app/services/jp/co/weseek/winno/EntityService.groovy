@@ -10,6 +10,10 @@ import org.grails.datastore.gorm.events.AutoTimestampEventListener
  */
 class EntityService {
 
+	/**
+	 * DI
+	 */
+	def grailsApplication
 
 	/**
 	 * enable or disable 'autoTimestamp' of specified entity
