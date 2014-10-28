@@ -5,7 +5,11 @@ def appName = Metadata.current.getApplicationName()
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
+grails.project.work.dir = "target/work"
+grails.project.target.level = 1.6
+grails.project.source.level = 1.6
 
+grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
 	// inherit Grails' default dependencies
 	inherits("global") {
@@ -26,34 +30,21 @@ grails.project.dependency.resolution = {
 		//mavenRepo "http://repository.jboss.com/maven2/"
 	}
 	dependencies {
-		// specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-		test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
-		
-		// http-builder
 		// http://jira.grails.org/browse/GRAILS-9990
 		// があるため、excludesしておく
-		compile('org.codehaus.groovy.modules.http-builder:http-builder:0.6') {
-			excludes 'groovy'
-		}
-		
-		// runtime 'mysql:mysql-connector-java:5.1.21'
+		// TODO: 0.7.2にupdateするためには、既存コードの修正が必要
+		// MbgaApiServiceIntegrationSpecがうまくいかなくなる
+		compile('org.codehaus.groovy.modules.http-builder:http-builder:0.6') { excludes 'groovy' }
 	}
 
 	plugins {
-		build(":tomcat:$grailsVersion",
-				":release:2.2.1",
-				":rest-client-builder:1.0.3") {
-					export = false
-		}
-		
+		// plugins for the build system only
+		build ':tomcat:7.0.54'
+
 		compile ":quartz:1.0.1"
-		
-		compile ":eclipse-scripts:1.0.7"
-		test(":spock:0.7") {
-			exclude "spock-grails-support"
-		}
+
 		test ":code-coverage:1.2.7"
-		compile ":codenarc:0.20"
+		compile ":codenarc:0.21"
 	}
 }
 

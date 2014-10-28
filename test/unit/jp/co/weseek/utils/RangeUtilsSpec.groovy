@@ -1,15 +1,16 @@
-package jp.co.weseek.utils
 
-import grails.plugin.spock.UnitSpec
+package jp.co.weseek.utils
 
 import org.codehaus.groovy.runtime.powerassert.PowerAssertionError
 
-class RangeUtilsSpec extends UnitSpec {
+import spock.lang.Specification
+
+class RangeUtilsSpec extends Specification {
 
 	def "test parseLongNumericRange"() {
 		when:
 		def result = RangeUtils.parseLongNumericRange("1-, -100, 12 -  15,  100, 110 - 101  , 200-200")
-		
+
 		then:
 		result == [
 			new ObjectRange(1L, Long.MAX_VALUE),
@@ -20,20 +21,20 @@ class RangeUtilsSpec extends UnitSpec {
 			200L,
 		]
 	}
-	
+
 	def "test parseLongNumericRange when the argument contains non-number string"() {
 		when:
 		RangeUtils.parseLongNumericRange("1-, -100, 12 -  15,  10hhhh0")
-		
+
 		then:
 		def ex = thrown IllegalArgumentException
 		println ex.message
 	}
-	
+
 	def "test parseLongNumericRange when assertion fails"() {
 		when:
 		RangeUtils.parseLongNumericRange(null)
-		
+
 		then:
 		thrown PowerAssertionError
 	}
