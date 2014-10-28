@@ -38,4 +38,20 @@ class RangeUtilsSpec extends Specification {
 		then:
 		thrown PowerAssertionError
 	}
+
+	def "test getMinMaxOfLongNumericRange with a String argument"() {
+		when:
+		def result = RangeUtils.getMinMaxOfLongNumericRange("1-10,100,110-101,200-")
+
+		then:
+		result == new ObjectRange(1L, Long.MAX_VALUE)
+	}
+
+	def "test getMinMaxOfLongNumericRange with a collection of String"() {
+		when:
+		def result = RangeUtils.getMinMaxOfLongNumericRange(['1-10,100','110-101,200-'])
+
+		then:
+		result == new ObjectRange(1L, Long.MAX_VALUE)
+	}
 }
