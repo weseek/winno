@@ -2,7 +2,7 @@ class WinnoGrailsPlugin {
 	def groupId = "jp.co.weseek"
 
 	// the plugin version
-	def version = "0.5.0-SNAPSHOT"
+	def version = "0.4.1"
 	// the version or versions of Grails the plugin is designed for
 	def grailsVersion = "2.3.11 > *"
 	// resources that are excluded from plugin packaging

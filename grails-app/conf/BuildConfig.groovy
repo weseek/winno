@@ -20,10 +20,10 @@ grails.project.dependency.resolution = {
 	legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
 	repositories {
 		grailsCentral()
+		mavenLocal()
 		mavenCentral()
 		// uncomment the below to enable remote dependency resolution
 		// from public Maven repositories
-		//mavenLocal()
 		//mavenRepo "http://snapshots.repository.codehaus.org"
 		//mavenRepo "http://repository.codehaus.org"
 		//mavenRepo "http://download.java.net/maven/2/"
@@ -38,6 +38,8 @@ grails.project.dependency.resolution = {
 	}
 
 	plugins {
+		build(":release:3.0.1", ":rest-client-builder:1.0.3") { export = false }
+
 		// plugins for the build system only
 		build ':tomcat:7.0.54'
 
